@@ -27,7 +27,7 @@ jobs:
     - run: npm i
     - run: npm run build
     - run: npm run export
-    - name: Commit files
+    - name: push website
       run: |
         rm -rf .git
         cd src/out
@@ -36,9 +36,5 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Commit a new version of website"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-        force: true
-        repository: creationsbdb/creationsbdb.github.io
+        git remote add publishing https://oteku:${{ secrets.MY_GITHUB_TOKEN }}@github.com/creationsbdb/creationsbdb.github.io.git
+        git push publishing master -f
