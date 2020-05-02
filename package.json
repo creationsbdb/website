@@ -8,8 +8,7 @@
   "scripts": {
     "dev": "next src",
     "build": "next build src",
-    "export": "next export src",
-    "deploy": "npm run build && npm run export && mv src/out docs"
+    "export": "next export src"
   },
   "dependencies": {
     "glob": "^7.1.6",
