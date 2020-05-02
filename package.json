@@ -1,0 +1,33 @@
+{
+  "name": "creationsbdb.github.io",
+  "private": true,
+  "description": "Site web de créations bulle de bonheur",
+  "license": "MPL-2.0",
+  "version": "0.1.0",
+  "author": "oteku",
+  "scripts": {
+    "dev": "next src",
+    "build": "next build src",
+    "export": "next export src",
+    "deploy": "npm run build && npm run export && mv src/out docs"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "gray-matter": "^4.0.2",
+    "js-yaml": "^3.13.1",
+    "moment": "^2.24.0",
+    "next": "^9.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.2",
+    "raw-loader": "^4.0.0",
+    "webpack": "^4.42.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creationsbdb/creationsbdb.github.io.git"
+  }
+}
