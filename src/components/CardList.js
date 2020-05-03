@@ -8,6 +8,7 @@ const CardList = ({ allCards }) => (
         picture={card.frontmatter?.images[0] ?? 'logo.png'}
         title={card.frontmatter?.title}
         price={card.frontmatter?.price}
+        url={card.slug}
       ></CardItem>
     ))}
     <style jsx>{`

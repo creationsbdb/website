@@ -5,15 +5,11 @@ const glob = require('glob');
 
 import Layout from '../../components/Layout';
 
-function reformatDate(fullDate) {
+const reformatDate = (fullDate) => {
   const date = new Date(fullDate);
   return date.toDateString().slice(4);
-}
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
-  function reformatDate(fullDate) {
-    const date = new Date(fullDate);
-    return date.toDateString().slice(4);
-  }
+};
+const BlogTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
   return (
     <Layout siteTitle={siteTitle}>
       <article className="blog">
@@ -28,8 +24,8 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
       </article>
     </Layout>
   );
-}
-
+};
+export default BlogTemplate;
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
   const content = await import(`../../posts/${slug}.md`);

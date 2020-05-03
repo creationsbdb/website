@@ -33,7 +33,7 @@ export default function Meta(props) {
             background-color: #fff;
             color: #616060;
             font-family: Helvetica, Arial, sans-serif;
-            font-size: 10px;
+            font-size: 12px;
             min-height: 100%;
             text-rendering: optimizeLegibility;
           }

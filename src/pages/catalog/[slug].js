@@ -4,27 +4,61 @@ import ReactMarkdown from 'react-markdown';
 const glob = require('glob');
 
 import Layout from '../../components/Layout';
-
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
-  function reformatDate(fullDate) {
-    const date = new Date(fullDate);
-    return date.toDateString().slice(4);
-  }
+const ProductTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
+  const [picture, setPicture] = React.useState(
+    () => frontmatter?.images[0] ?? 'logo.png'
+  );
+  const handleClick = (pic) => (e) => setPicture(pic);
   return (
     <Layout siteTitle={siteTitle + ' - catalogue des création'}>
-      <article className="blog">
-        <div className="blog__info">
-          <h1>{frontmatter?.title}</h1>
-          <h3>{reformatDate(frontmatter?.date)}</h3>
+      <article className="product">
+        <div className="picture">
+          <img src={'/images/' + picture}></img>
+          <div className="pic_list">
+            {frontmatter?.images?.map((pic) => (
+              <img src={'/images/' + pic} onClick={handleClick(pic)}></img>
+            ))}
+          </div>
         </div>
-        <div className="blog__body">
+        <div className="info">
+          <h1>{frontmatter?.title}</h1>
           <ReactMarkdown source={markdownBody} />
         </div>
       </article>
+      <style jsx>{`
+        .product {
+          display: flex;
+          width: 100vw;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        img {
+          height: 30vw;
+        }
+        .pic_list {
+          flex-direction: row;
+        }
+        .pic_list img {
+          margin-right: 5px;
+          height: 5vw;
+        }
+        .pic_list img:hover {
+          cursor: pointer;
+        }
+        .picture {
+          flex-direction: column;
+        }
+        .info {
+          margin-left: 25px;
+          flex-direction: column;
+          width: 45vw;
+        }
+      `}</style>
     </Layout>
   );
-}
+};
 
+export default ProductTemplate;
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
   const content = await import(`../../products/${slug}.md`);
