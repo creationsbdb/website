@@ -1,45 +1,38 @@
-import Link from 'next/link';
-
 export default function Header(props) {
   return (
     <footer className="footer">
       <div className="divider"></div>
       <div className="row">
         <div className="column">
-          <Link href="/catalog">
+          <a href="/catalog">
             <p>Catalogue</p>
-          </Link>
-          <Link href="/order">
+          </a>
+          <a href="/order">
             <p>Commander</p>
-          </Link>
-          <Link href="/introduction">
+          </a>
+          <a href="/introduction">
             <p>Qui suis-je</p>
-          </Link>
-          <Link href="/blog">
+          </a>
+          <a href="/blog">
             <p>Blog</p>
-          </Link>
+          </a>
         </div>
         <div className="column">
-          <p>
-            <a rel="nofollow" href={props.facebook}>
-              Facebook
-            </a>
-          </p>
-          <p>
-            <a rel="nofollow" href={props.instagram}>
-              Instagram
-            </a>
-          </p>
-          <p>
-            <a
-              rel="nofollow"
-              href={
-                'mailto:' + props.email + '?subject=[creationsbdb]%20question'
-              }
-            >
-              Contact
-            </a>
-          </p>
+          <a rel="nofollow" href={props.facebook}>
+            <p>Facebook</p>
+          </a>
+
+          <a rel="nofollow" href={props.instagram}>
+            <p>Instagram</p>
+          </a>
+          <a
+            rel="nofollow"
+            href={
+              'mailto:' + props.email + '?subject=[creationsbdb]%20question'
+            }
+          >
+            <p>Contact</p>
+          </a>
         </div>
         <div className="column"></div>
         <div className="column"></div>
@@ -52,9 +45,6 @@ export default function Header(props) {
         {'. Les contenus sont la propriété de Clémentine Haesslé.'}
       </div>
       <style jsx>{`
-        a {
-          all: unset;
-        }
         .divider {
           margin-top: 5vh;
           height: 1px;
@@ -73,14 +63,15 @@ export default function Header(props) {
           display: flex;
           flex-direction: column;
         }
-        a,
-        p {
+        a {
+          all: unset;
+        }
+        a {
           margin-bottom: 0;
           font-size: 13px;
           color: rgb(97, 96, 96);
         }
-        a:hover,
-        p:hover {
+        a:hover {
           cursor: pointer;
         }
         .bottom {

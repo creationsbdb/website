@@ -8,30 +8,33 @@ export default function Header(props) {
       </div>
       <div className="container">
         <nav className="nav" role="navigation" aria-label="main navigation">
-          <Link href="/">
+          <a href="/">
             <h2>Accueil</h2>
-          </Link>
-          <Link href="/catalog">
+          </a>
+          <a href="/catalog">
             <h2>Catalogue</h2>
-          </Link>
-          <Link href="/order">
+          </a>
+          <a href="/order">
             <h2>Commander</h2>
-          </Link>
-          <Link href="/introduction">
+          </a>
+          <a href="/introduction">
             <h2>Qui suis-je</h2>
-          </Link>
-          <Link href="/blog">
+          </a>
+          <a href="/blog">
             <h2>Blog</h2>
-          </Link>
+          </a>
         </nav>
       </div>
       <style jsx>
         {`
-          h2 {
+          a {
+            all: unset;
+          }
+          a {
             margin-bottom: 0;
             color: #a6a6a6;
           }
-          h2:hover {
+          a:hover {
             cursor: pointer;
             color: #000000;
           }
