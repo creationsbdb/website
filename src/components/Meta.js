@@ -37,10 +37,19 @@ export default function Meta(props) {
             min-height: 100%;
             text-rendering: optimizeLegibility;
           }
+          a {
+            all: unset;
+          }
+          a:hover {
+            cursor: pointer;
+          }
           h1,
           h2,
           h3 {
             font-family: 'Quicksand-Regular';
+          }
+          img {
+            max-width: 100%;
           }
           @font-face {
             font-family: 'Quicksand-Regular';

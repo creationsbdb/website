@@ -7,7 +7,7 @@ import Layout from '../../components/Layout';
 
 const reformatDate = (fullDate) => {
   const date = new Date(fullDate);
-  return date.toDateString().slice(4);
+  return date.toLocaleDateString('fr-FR');
 };
 const BlogTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
   return (
@@ -21,10 +21,16 @@ const BlogTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
           </h2>
           <h3>{reformatDate(frontmatter?.date)}</h3>
         </div>
-        <div>
+        <div className="container">
           <ReactMarkdown source={markdownBody} />
         </div>
       </article>
+      <style jsx>{`
+        .container {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+      `}</style>
     </Layout>
   );
 };

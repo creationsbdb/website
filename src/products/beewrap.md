@@ -1,5 +1,6 @@
 ---
 title: Cellophane réutilisable Bee wraps
+description: Film alimentaire réutilisable, cellophane en tissu et résine de cire d'abeille pour protéger vos aliments en mode zéro déchet
 price: 9,00
 date: '2020-05-01'
 images: ['beewraps.jpg']

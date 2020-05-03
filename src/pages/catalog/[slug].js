@@ -49,14 +49,14 @@ const ProductTemplate = ({
           flex-wrap: wrap;
         }
         img {
-          height: 30vw;
+          width: 30vw;
         }
         .pic_list {
           flex-direction: row;
         }
         .pic_list img {
-          margin-right: 5px;
-          height: 5vw;
+          margin-right: 2px;
+          width: 5vw;
         }
         .pic_list img:hover {
           cursor: pointer;

@@ -28,14 +28,10 @@ export default function Header(props) {
       <style jsx>
         {`
           a {
-            all: unset;
-          }
-          a {
             margin-bottom: 0;
             color: #a6a6a6;
           }
           a:hover {
-            cursor: pointer;
             color: #000000;
           }
           nav {

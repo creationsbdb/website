@@ -23,6 +23,11 @@ const CardList = ({ allCards }) => (
         flex-direction: row;
         flex-wrap: wrap;
       }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+      }
     `}</style>
   </div>
 );

@@ -27,10 +27,16 @@ const ContentTemplate = ({
         <div>
           <h1>{frontmatter?.title}</h1>
         </div>
-        <div className="blog__body">
+        <div className="container">
           <ReactMarkdown source={markdownBody} />
         </div>
       </article>
+      <style jsx>{`
+        .container {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+      `}</style>
     </Layout>
   );
 };

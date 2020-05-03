@@ -16,6 +16,10 @@ const Index = (props) => {
       email={props.email}
     >
       <h4 className="subtitle">{pageTitle}</h4>
+      <img
+        src={'/images/banner-mother-and-daughter1.jpg'}
+        alt="mother-and-daughter"
+      ></img>
       <BlogList allBlogs={props.allBlogs} />
       <style jsx>{`
         h4 {
@@ -62,16 +66,18 @@ export async function getStaticProps() {
   //get posts & context from folder
   const posts = getDatas(require.context('../../posts', true, /\.md$/));
   const comparePosts = (a, b) => {
-    const aDate = new Date(a.date) ?? new Date();
-    const bDate = new Date(b.date) ?? new Date();
-    if (aDate < bDate) return -1;
-    if (aDate > bDate) return 1;
+    const aDate = new Date(a.frontmatter.date) ?? new Date();
+    const bDate = new Date(b.frontmatter.date) ?? new Date();
+    if (aDate < bDate) return 1;
+    if (aDate > bDate) return -1;
     return 0;
   };
 
   return {
     props: {
-      allBlogs: posts.sort(comparePosts),
+      allBlogs: posts
+        .filter((post) => !post.frontmatter?.draft && true)
+        .sort(comparePosts),
       title: siteConfig.default.title,
       description: siteConfig.default.description,
       email: siteConfig.default.email,

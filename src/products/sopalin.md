@@ -1,5 +1,6 @@
 ---
 title: Pack 5 sopalins lavables
+description: sopalins essuie tout zéro-déchet, absorbant, réutilisable, lavables
 price: 15,00
 date: '2020-05-01'
 images: ['sopalin.jpg']

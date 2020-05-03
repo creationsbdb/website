@@ -1,5 +1,6 @@
 ---
 title: Lingettes
+description: Petites lingettes douces, lavables et réutilisables pour nettoyer les fesses de bébé en douceur. Lingette idéale pour un change zéro déchet. Lingette éthique pour langer votre nourrisson.
 price: 12
 date: '2020-05-01'
 images: ['lingettes.jpg']

@@ -40,6 +40,11 @@ const CardItem = ({ picture, title, price, url }) => (
         width: 20px;
         background-color: #000000;
       }
+      @media (max-width: 768px) {
+        img {
+          width: 100%;
+        }
+      }
     `}</style>
   </div>
 );

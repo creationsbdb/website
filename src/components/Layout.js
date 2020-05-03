@@ -37,6 +37,14 @@ export default function Layout(props) {
               margin-right: 15vw;
             }
           }
+          @media (max-width: 768px) {
+            .content {
+              flex-grow: none;
+              width: 90vw;
+              margin-left: 5vw;
+              margin-right: 5vw;
+            }
+          }
         `}
       </style>
     </div>

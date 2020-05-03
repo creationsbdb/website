@@ -64,15 +64,9 @@ export default function Header(props) {
           flex-direction: column;
         }
         a {
-          all: unset;
-        }
-        a {
           margin-bottom: 0;
           font-size: 13px;
           color: rgb(97, 96, 96);
-        }
-        a:hover {
-          cursor: pointer;
         }
         .bottom {
           margin-top: 25px;

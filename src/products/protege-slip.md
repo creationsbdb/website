@@ -3,7 +3,7 @@ title: Pack 3 protèges slip lavables
 description: protège slip Zero-déchet, absorbant, doux, confortable et écologique
 price: 20,00
 date: '2020-05-01'
-images: ['protege_slip.jpg']
+images: ['protege_slip.jpg', 'protege-slip2.jpg']
 ---
 
 🌿 Nouveauté Zero-déchet chez Créations Bulle de Bonheur : Les protèges slips lavables. 🌿

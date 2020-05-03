@@ -1,8 +1,9 @@
 ---
 title: Le Titre de l'article
 author: Clémentine Haesslé
+description: Texte de présentation de l'article. Attention ce texte sera visible sur la liste d'article. En général, il est bon de reprendre le premier paragraphe de l'article.
 date: '2019-07-10'
-draft: true
+draft: false
 ---
 
 # Ceci est un titre de niveau 1
