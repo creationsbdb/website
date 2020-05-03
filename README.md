@@ -2,6 +2,8 @@
 
 Ce dépôt contient les sources du site web https://creationsbdb.github.io/
 
+Status de publication : ![Node.js CI](https://github.com/creationsbdb/website/workflows/Node.js%20CI/badge.svg)
+
 ## Ajouter un produit
 
 TODO
