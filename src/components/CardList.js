@@ -2,15 +2,19 @@ import CardItem from './CardItem';
 
 const CardList = ({ allCards }) => (
   <div className="container">
-    {allCards.map((card, index) => (
-      <CardItem
-        key={index}
-        picture={card.frontmatter?.images[0] ?? 'logo.png'}
-        title={card.frontmatter?.title}
-        price={card.frontmatter?.price}
-        url={card.slug}
-      ></CardItem>
-    ))}
+    {Array.isArray(allCards) ? (
+      allCards.map((card, index) => (
+        <CardItem
+          key={index}
+          picture={card.frontmatter?.images[0] ?? 'logo.png'}
+          title={card.frontmatter?.title ?? 'Pas de titre'}
+          price={card.frontmatter?.price}
+          url={card.slug}
+        ></CardItem>
+      ))
+    ) : (
+      <></>
+    )}
     <style jsx>{`
       .container {
         display: flex;

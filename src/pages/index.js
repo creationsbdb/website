@@ -60,10 +60,10 @@ export async function getStaticProps() {
   const posts = getDatas(require.context('../posts', true, /\.md$/));
   const products = getDatas(require.context('../products', true, /\.md$/));
   const compareProducts = (a, b) => {
-    const aDate = new Date(a.date) ?? new Date();
-    const bDate = new Date(b.date) ?? new Date();
-    if (aDate < bDate) return -1;
-    if (aDate > bDate) return 1;
+    const aDate = new Date(a.frontmatter.date) ?? new Date();
+    const bDate = new Date(b.frontmatter.date) ?? new Date();
+    if (aDate < bDate) return 1;
+    if (aDate > bDate) return -1;
     // a doit être égal à b
     return 0;
   };

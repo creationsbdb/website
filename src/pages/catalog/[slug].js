@@ -4,13 +4,28 @@ import ReactMarkdown from 'react-markdown';
 const glob = require('glob');
 
 import Layout from '../../components/Layout';
-const ProductTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
+const ProductTemplate = ({
+  frontmatter,
+  markdownBody,
+  siteTitle,
+  url,
+  facebook,
+  instagram,
+  email,
+}) => {
   const [picture, setPicture] = React.useState(
     () => frontmatter?.images[0] ?? 'logo.png'
   );
   const handleClick = (pic) => (e) => setPicture(pic);
   return (
-    <Layout siteTitle={siteTitle + ' - catalogue des création'}>
+    <Layout
+      siteTitle={siteTitle + ' - ' + frontmatter?.title}
+      siteDescription={frontmatter?.description}
+      siteUrl={'/catalog/' + url}
+      facebook={facebook}
+      instagram={instagram}
+      email={email}
+    >
       <article className="product">
         <div className="picture">
           <img src={'/images/' + picture}></img>
@@ -22,6 +37,7 @@ const ProductTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
         </div>
         <div className="info">
           <h1>{frontmatter?.title}</h1>
+          <h2>{(frontmatter?.price ?? ' - ') + ' €'}</h2>
           <ReactMarkdown source={markdownBody} />
         </div>
       </article>
@@ -59,6 +75,7 @@ const ProductTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
 };
 
 export default ProductTemplate;
+
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
   const content = await import(`../../products/${slug}.md`);
@@ -70,6 +87,10 @@ export async function getStaticProps({ ...ctx }) {
       siteTitle: config.title,
       frontmatter: data.data,
       markdownBody: data.content,
+      url: slug,
+      email: config.email,
+      facebook: config.facebook,
+      instagram: config.instagram,
     },
   };
 }

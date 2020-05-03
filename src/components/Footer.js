@@ -7,10 +7,10 @@ export default function Header(props) {
           <a href="/catalog">
             <p>Catalogue</p>
           </a>
-          <a href="/order">
+          <a href="/content/commander">
             <p>Commander</p>
           </a>
-          <a href="/introduction">
+          <a href="/content/qui-suis-je">
             <p>Qui suis-je</p>
           </a>
           <a href="/blog">

@@ -9,13 +9,13 @@ const Index = (props) => {
     <Layout
       pathname="/catalog"
       siteTitle={props.title + ' - ' + pageTitle}
-      siteDescription={props.description}
-      siteUrl={props.url}
+      siteDescription={props.description + ' ' + pageTitle}
+      siteUrl="/catalog"
       facebook={props.facebook}
       instagram={props.instagram}
       email={props.email}
     >
-      <h4 className="subtitle">pageTitle</h4>
+      <h4 className="subtitle">{pageTitle}</h4>
       <CardList allCards={props.allProducts}></CardList>
       <style jsx>{`
         h4 {
@@ -55,14 +55,14 @@ const getDatas = (context) => {
   return data;
 };
 export async function getStaticProps() {
-  const siteConfig = await import(`../../data/config.json`);
+  const config = await import(`../../data/config.json`);
   //get posts & context from folder
   const products = getDatas(require.context('../../products', true, /\.md$/));
   const compareProducts = (a, b) => {
-    const aDate = new Date(a.date) ?? new Date();
-    const bDate = new Date(b.date) ?? new Date();
-    if (aDate < bDate) return -1;
-    if (aDate > bDate) return 1;
+    const aDate = new Date(a.frontmatter.date);
+    const bDate = new Date(b.frontmatter.date);
+    if (aDate < bDate) return 1;
+    if (aDate > bDate) return -1;
     // a doit être égal à b
     return 0;
   };
@@ -70,12 +70,11 @@ export async function getStaticProps() {
   return {
     props: {
       allProducts: products.sort(compareProducts),
-      title: siteConfig.default.title,
-      description: siteConfig.default.description,
-      url: siteConfig.default.url,
-      email: siteConfig.default.email,
-      facebook: siteConfig.default.facebook,
-      instagram: siteConfig.default.instagram,
+      title: config.title,
+      description: config.description,
+      email: config.email,
+      facebook: config.facebook,
+      instagram: config.instagram,
     },
   };
 }

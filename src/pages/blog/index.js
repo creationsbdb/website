@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import Layout from '../../components/Layout';
 import BlogList from '../../components/BlogList';
 
-const pageTitle = 'TOUTES LES ARTICLES DE BLOG';
+const pageTitle = 'TOUS LES ARTICLES DE BLOG';
 
 const Index = (props) => {
   return (

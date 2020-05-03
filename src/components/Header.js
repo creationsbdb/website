@@ -14,10 +14,10 @@ export default function Header(props) {
           <a href="/catalog">
             <h2>Catalogue</h2>
           </a>
-          <a href="/order">
+          <a href="/content/commander">
             <h2>Commander</h2>
           </a>
-          <a href="/introduction">
+          <a href="/content/qui-suis-je">
             <h2>Qui suis-je</h2>
           </a>
           <a href="/blog">

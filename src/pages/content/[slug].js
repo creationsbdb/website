@@ -5,33 +5,39 @@ const glob = require('glob');
 
 import Layout from '../../components/Layout';
 
-const reformatDate = (fullDate) => {
-  const date = new Date(fullDate);
-  return date.toDateString().slice(4);
-};
-const BlogTemplate = ({ frontmatter, markdownBody, siteTitle }) => {
+const ContentTemplate = ({
+  frontmatter,
+  markdownBody,
+  siteTitle,
+  url,
+  facebook,
+  instagram,
+  email,
+}) => {
   return (
-    <Layout siteTitle={siteTitle + ' - ' + frontmatter?.title}>
+    <Layout
+      siteTitle={siteTitle + ' - ' + frontmatter?.title}
+      siteDescription={frontmatter?.description}
+      siteUrl={'/content/' + url}
+      facebook={facebook}
+      instagram={instagram}
+      email={email}
+    >
       <article>
         <div>
           <h1>{frontmatter?.title}</h1>
-          <h2 className="blog__footer">
-            {' par '}
-            {frontmatter?.author}
-          </h2>
-          <h3>{reformatDate(frontmatter?.date)}</h3>
         </div>
-        <div>
+        <div className="blog__body">
           <ReactMarkdown source={markdownBody} />
         </div>
       </article>
     </Layout>
   );
 };
-export default BlogTemplate;
+export default ContentTemplate;
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params;
-  const content = await import(`../../posts/${slug}.md`);
+  const content = await import(`../../contents/${slug}.md`);
   const config = await import(`../../data/config.json`);
   const data = matter(content.default);
 
@@ -40,13 +46,17 @@ export async function getStaticProps({ ...ctx }) {
       siteTitle: config.title,
       frontmatter: data.data,
       markdownBody: data.content,
+      url: slug,
+      email: config.email,
+      facebook: config.facebook,
+      instagram: config.instagram,
     },
   };
 }
 
 export async function getStaticPaths() {
   //get all .md files in the posts dir
-  const blogs = glob.sync('src/posts/**/*.md');
+  const blogs = glob.sync('src/contents/**/*.md');
 
   //remove path and extension to leave filename only
   const blogSlugs = blogs.map((file) =>
@@ -54,7 +64,7 @@ export async function getStaticPaths() {
   );
 
   // create paths with `slug` param
-  const paths = blogSlugs.map((slug) => `/blog/${slug}`);
+  const paths = blogSlugs.map((slug) => `/content/${slug}`);
   return {
     paths,
     fallback: false,
