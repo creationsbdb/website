@@ -5,13 +5,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,22 +18,23 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i
-    - run: npm run build
-    - run: npm run export
-    - name: push website
-      run: |
-        rm -rf .git
-        cd src/out
-        git init
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Commit a new version of website"
-        git remote add publishing https://oteku:${{ secrets.MY_GITHUB_TOKEN }}@github.com/creationsbdb/creationsbdb.github.io.git
-        git push publishing master -f
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+      - run: npm run build
+      - run: npm run export
+      - name: push website
+        run: |
+          rm -rf .git
+          cd src/out
+          echo 'bulle-de-bonheur.shop' > CNAME
+          git init
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Commit a new version of website"
+          git remote add publishing https://oteku:${{ secrets.MY_GITHUB_TOKEN }}@github.com/creationsbdb/creationsbdb.github.io.git
+          git push publishing master -f
