@@ -28,10 +28,16 @@ const ProductTemplate = ({
     >
       <article className="product">
         <div className="picture">
-          <img src={'/images/' + picture}></img>
+          <div className="pic_main">
+            <img src={'/images/' + picture}></img>
+          </div>
           <div className="pic_list">
             {frontmatter?.images?.map((pic) => (
-              <img src={'/images/' + pic} onClick={handleClick(pic)}></img>
+              <img
+                key={pic}
+                src={'/images/' + pic}
+                onClick={handleClick(pic)}
+              ></img>
             ))}
           </div>
         </div>
@@ -57,6 +63,8 @@ const ProductTemplate = ({
         .pic_list img {
           margin-right: 2px;
           width: 5vw;
+          height: 10vh;
+          object-fit: cover;
         }
         .pic_list img:hover {
           cursor: pointer;
@@ -68,6 +76,31 @@ const ProductTemplate = ({
           margin-left: 25px;
           flex-direction: column;
           width: 45vw;
+        }
+        @media (max-width: 768px) {
+          .product {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+          }
+          .picture {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+          }
+          .pic_main {
+          }
+          .pic_list {
+            display: flex;
+            flex-direction: column;
+          }
+          .pic_list img {
+            margin-bottom: 2px;
+            width: 10vw;
+            height: 5vh;
+            object-fit: cover;
+            flex-direction: column;
+          }
         }
       `}</style>
     </Layout>
