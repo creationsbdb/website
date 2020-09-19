@@ -37,4 +37,5 @@ jobs:
           git add .
           git commit -m "Commit a new version of website"
           git remote add publishing https://oteku:${{ secrets.MY_GITHUB_TOKEN }}@github.com/creationsbdb/creationsbdb.github.io.git
+          git pull publishing master --rebase
           git push publishing master -f
